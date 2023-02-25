@@ -1,0 +1,41 @@
+* {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+body {
+  padding: 1.5rem;
+  background-color: rgba(164, 171, 189, 0.3);
+}
+h1,
+h3 {
+  text-align: center;
+  padding: 1.5rem;
+}
+.container {
+  width: 50%;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: #f8f8f8;
+}
+.cards,
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+}
+.cards {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 25rem;
+  width: 25rem;
+}
+.card .front-card img {
+  width: 4rem;
+}
+.card .back-card img {
+  width: 4rem;
+}
