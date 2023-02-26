@@ -13,11 +13,13 @@ h3 {
   padding: 1.5rem;
 }
 .container {
-  width: 50%;
+  /* height: 25rem; */
+  width: 25rem;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   background-color: #f8f8f8;
+  perspective: 1000px;
 }
 .cards,
 .card {
@@ -30,12 +32,38 @@ h3 {
 .cards {
   flex-wrap: wrap;
   justify-content: space-between;
-  height: 25rem;
-  width: 25rem;
+  perspective: 1000px;
 }
-.card .front-card img {
-  width: 4rem;
+.card {
+  transform-style: preserve-3d;
 }
+.cards .card {
+  height: calc(100% / 4 - 10px);
+  width: calc(100% / 4 - 10px);
+  justify-content: space-between;
+  border-radius: 5px;
+  margin: 5px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+  transition: 0.2s ease-in-out;
+  position: relative;
+}
+.cards .card:active {
+  transform: scale(0.97);
+}
+.card .front-card {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+.card .back-card {
+  position: absolute;
+  backface-visibility: hidden;
+}
+.card .front-card img,
 .card .back-card img {
-  width: 4rem;
+  width: 4.5rem;
+  border-radius: 5px;
+}
+.card.flip {
+  transform: rotateY(180deg);
 }
