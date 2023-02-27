@@ -3,8 +3,7 @@ const startBtn = document.getElementById('start');
 
 let isFlippedCard = false;
 let lockBoard = false;
-let firstCard;
-let secondCard;
+let firstCard, secondCard;
 
 function flipCard() {
   if (lockBoard) return;
@@ -47,11 +46,14 @@ function resetBoard() {
   [firstCard, secondCard] = [null, null];
 }
 
-function shuffle(){
-    cards.forEach(card => {
-        let randomOrder = Math.floor(Math.random()* 16);
-        card.style.order = randomOrder;
-    });
+function shuffle() {
+  resetBoard();
+  cards.forEach((card) => {
+    card.classList.remove('flip');
+    card.addEventListener('click', flipCard);
+    let randomOrder = Math.floor(Math.random() * 16);
+    card.style.order = randomOrder;
+  });
 }
 
 cards.forEach((card) => {
