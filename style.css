@@ -1,10 +1,10 @@
 * {
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
   box-sizing: border-box;
 }
 body {
-  padding: 1.5rem;
+  height: 100vh;
   background-color: rgba(164, 171, 189, 0.3);
 }
 h1,
@@ -13,10 +13,9 @@ h3 {
   padding: 1.5rem;
 }
 .container {
-  /* height: 25rem; */
   width: 25rem;
+  margin: 1rem auto;
   padding: 1.5rem;
-  margin-top: 1rem;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   background-color: #f8f8f8;
@@ -25,29 +24,23 @@ h3 {
 .cards,
 .card {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   list-style: none;
-}
-.cards {
-  flex-wrap: wrap;
-  justify-content: space-between;
   perspective: 1000px;
 }
-.card {
-  transform-style: preserve-3d;
-}
 .cards .card {
+  margin: 5px;
   height: calc(100% / 4 - 10px);
   width: calc(100% / 4 - 10px);
-  justify-content: space-between;
   border-radius: 5px;
-  margin: 5px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
   transform: scale(1);
   transition: 0.2s ease-in-out;
   position: relative;
+  transform-style: preserve-3d;
 }
 .cards .card:active {
   transform: scale(0.97);
