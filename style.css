@@ -16,6 +16,7 @@ h3 {
   /* height: 25rem; */
   width: 25rem;
   padding: 1.5rem;
+  margin-top: 1rem;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   background-color: #f8f8f8;
@@ -66,4 +67,11 @@ h3 {
 }
 .card.flip {
   transform: rotateY(180deg);
+}
+#start {
+  padding: 0.5rem 1rem;
+}
+#start:hover {
+  padding: 0.5rem 1rem;
+  background-color: rgba(164, 171, 189, 0.3);
 }
