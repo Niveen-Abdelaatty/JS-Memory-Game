@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./overlay.css" />
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" defer></script>
     <title>Memory Game</title>
@@ -13,140 +14,150 @@
       <h1>Have Some Fun!</h1>
       <h3>Let's Play Together</h3>
     </div>
-    <div class="container">
-      <ul class="cards">
-        <li class="card" data-card="pear">
-          <div class="front-card">
-            <img src="./images/img-1.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="orange">
-          <div class="front-card">
-            <img src="./images/img-2.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="plants">
-          <div class="front-card">
-            <img src="./images/img-3.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="fruit">
-          <div class="front-card">
-            <img src="./images/img-4.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="apple">
-          <div class="front-card">
-            <img src="./images/img-5.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="cheers">
-          <div class="front-card">
-            <img src="./images/img-6.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="plants">
-          <div class="front-card">
-            <img src="./images/img-3.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="apple">
-          <div class="front-card">
-            <img src="./images/img-5.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="cheers">
-          <div class="front-card">
-            <img src="./images/img-6.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="pear">
-          <div class="front-card">
-            <img src="./images/img-1.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="orange">
-          <div class="front-card">
-            <img src="./images/img-2.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="fruit">
-          <div class="front-card">
-            <img src="./images/img-4.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="plants">
-          <div class="front-card">
-            <img src="./images/img-3.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="apple">
-          <div class="front-card">
-            <img src="./images/img-5.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="apple">
-          <div class="front-card">
-            <img src="./images/img-5.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-        <li class="card" data-card="plants">
-          <div class="front-card">
-            <img src="./images/img-3.jpg" alt="card-img" />
-          </div>
-          <div class="back-card">
-            <img src="./images/front-img.png" alt="card-front" />
-          </div>
-        </li>
-      </ul>
+    <div class="results"><img src="./images/winning.jpeg" alt="winning" /></div>
+    <div id="backdrop"></div>
+    <div class="container controls">
+      <button id="level">Level</button>
+      <button id="start">You Wanna Play</button>
     </div>
-    <div class="container">
+    <aside class="modal" id="config-overlay">
+      <div class="container">
+        <ul class="cards">
+          <li class="card" data-card="pear">
+            <div class="front-card">
+              <img src="./images/img-1.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="orange">
+            <div class="front-card">
+              <img src="./images/img-2.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="plants">
+            <div class="front-card">
+              <img src="./images/img-3.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="fruit">
+            <div class="front-card">
+              <img src="./images/img-4.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="apple">
+            <div class="front-card">
+              <img src="./images/img-5.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="cheers">
+            <div class="front-card">
+              <img src="./images/img-6.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="plants">
+            <div class="front-card">
+              <img src="./images/img-3.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="apple">
+            <div class="front-card">
+              <img src="./images/img-5.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="cheers">
+            <div class="front-card">
+              <img src="./images/img-6.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="pear">
+            <div class="front-card">
+              <img src="./images/img-1.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="orange">
+            <div class="front-card">
+              <img src="./images/img-2.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="fruit">
+            <div class="front-card">
+              <img src="./images/img-4.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="plants">
+            <div class="front-card">
+              <img src="./images/img-3.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="apple">
+            <div class="front-card">
+              <img src="./images/img-5.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="apple">
+            <div class="front-card">
+              <img src="./images/img-5.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+          <li class="card" data-card="plants">
+            <div class="front-card">
+              <img src="./images/img-3.jpg" alt="card-img" />
+            </div>
+            <div class="back-card">
+              <img src="./images/front-img.png" alt="card-front" />
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="container">
+        <button id="score">Score</button>
         <button id="start">Start</button>
-    </div>
+        <button id="start">Start</button>
+      </div>
+    </aside>
   </body>
 </html>

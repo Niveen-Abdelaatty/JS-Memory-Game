@@ -1,9 +1,17 @@
+const playerConfigOverlayElement = document.getElementById('config-overlay');
+const backdropElement = document.getElementById('backdrop');
+
 const cards = document.querySelectorAll('.card');
 const startBtn = document.getElementById('start');
 
+const scoreElement = document.getElementById('score');
+const resultsElement = document.querySelector('.results');
+
 let isFlippedCard = false;
 let lockBoard = false;
-let firstCard, secondCard;
+let firstCard, secondCard, playername;
+let matches = 0;
+let levelCards = 8;
 
 function flipCard() {
   if (lockBoard) return;
@@ -17,11 +25,18 @@ function flipCard() {
   }
   secondCard = this;
   cardsMatching();
+  whoWins();
 }
 
 const cardsMatching = () => {
   const isMatch = firstCard.dataset.card === secondCard.dataset.card;
-  isMatch ? disableCard() : unflipCards();
+  if (isMatch) {
+    disableCard();
+    matches++;
+    scoreElement.textContent = matches;
+  } else {
+    unflipCards();
+  }
 };
 
 const disableCard = () => {
@@ -47,6 +62,7 @@ function resetBoard() {
 }
 
 function shuffle() {
+  openPlayerConfig();
   resetBoard();
   cards.forEach((card) => {
     card.classList.remove('flip');
@@ -54,6 +70,22 @@ function shuffle() {
     let randomOrder = Math.floor(Math.random() * 16);
     card.style.order = randomOrder;
   });
+}
+
+function openPlayerConfig() {
+  playerConfigOverlayElement.style.display = 'block';
+  backdropElement.style.display = 'block';
+}
+
+function whoWins() {
+  if (matches === levelCards) {
+    playerConfigOverlayElement.style.display = 'none';
+
+    resultsElement.style.display = 'block';
+    backdropElement.style.display = 'block';
+
+    console.log('you win');
+  }
 }
 
 cards.forEach((card) => {

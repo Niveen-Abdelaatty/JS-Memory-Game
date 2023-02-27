@@ -61,10 +61,27 @@ h3 {
 .card.flip {
   transform: rotateY(180deg);
 }
-#start {
+button {
+  width: calc(100% / 3 - 10px);
   padding: 0.5rem 1rem;
 }
-#start:hover {
+button :hover {
   padding: 0.5rem 1rem;
   background-color: rgba(164, 171, 189, 0.3);
+}
+.controls button {
+  width: calc(100% / 2 - 5px);
+}
+.results {
+  width: 25rem;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+ .results img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
 }
