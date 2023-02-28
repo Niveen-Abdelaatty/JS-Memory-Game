@@ -6,15 +6,32 @@ const level = document.getElementById('level');
 const mediumLvlCards = document.querySelectorAll('.medium');
 const startBtn = document.getElementById('start');
 const refreshBtn = document.getElementById('refresh');
+const timerBtn = document.getElementById('timer');
 const scoreElement = document.getElementById('score');
 const resultsElement = document.querySelector('.results');
 
 let isFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard, playername;
+let seconds = 0,
+  minutes = 0;
 let matches = 0;
 let levelCards;
+let interval;
 // let levelCardArray = [];
+
+const timeGenerator = () => {
+  seconds += 1;
+  if (seconds >= 60) {
+    minutes += 1;
+    seconds = 0;
+  }
+  //Format time before displaying
+  let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
+  let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+
+  timerBtn.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+};
 
 function levelSelect() {
   const value = level.value;
@@ -71,23 +88,28 @@ const unflipCards = () => {
   }, 1000);
 };
 
-function resetBoard() {
+const resetBoard = () => {
   [isFlippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
 
-function displayLvlCards() {
+const displayLvlCards = () => {
   const lvl = levelSelect();
   console.log(lvl);
   if (lvl === 'medium') {
     mediumLvlCards.forEach((card) => (card.style.display = 'block'));
-  }else{
+  } else {
     mediumLvlCards.forEach((card) => (card.style.display = 'none'));
   }
 }
-function shuffle() {
-  matches = 0;
+
+const shuffle = () => {
+  [matches, seconds, minutes] = [0, 0, 0];
+ 
   scoreElement.textContent = 'Score';
+
+  interval = setInterval(timeGenerator, 1000);
+
   displayLvlCards();
   openPlayerConfig();
   resetBoard();
@@ -100,13 +122,15 @@ function shuffle() {
   });
 }
 
-function openPlayerConfig() {
+const openPlayerConfig = () => {
   playerConfigOverlayElement.style.display = 'block';
   backdropElement.style.display = 'block';
 }
 
-function whoWins() {
-  if (matches === levelCards/2) {
+const whoWins = () => {
+  if (matches === levelCards / 2) {
+    clearInterval(interval);
+
     playerConfigOverlayElement.style.display = 'none';
 
     resultsElement.style.display = 'block';
@@ -120,6 +144,13 @@ cards.forEach((card) => {
   card.addEventListener('click', flipCard);
 });
 
+const refresh = () => {
+  clearInterval(interval);
+  [seconds, minutes] = [0, 0];
+
+  shuffle();
+}
+
 level.addEventListener('change', levelSelect);
 startBtn.addEventListener('click', shuffle);
-refreshBtn.addEventListener('click', shuffle);
+refreshBtn.addEventListener('click', refresh);
