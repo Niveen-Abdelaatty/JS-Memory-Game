@@ -24,10 +24,10 @@
 #config-overlay h2 {
   margin: 0.5rem 0;
 }
-@media (min-width: 48rem) {
+/* @media (min-width: 48rem) {
   .modal {
-    left: calc(50% - 20rem);
-    width: 40rem;
+    left: calc(45% - 20rem);
+    width: 55rem;
   }
-}
+} */
 
