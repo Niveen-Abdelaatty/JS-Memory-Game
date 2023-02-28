@@ -9,6 +9,10 @@ const timerBtn = document.getElementById('timer');
 const scoreElement = document.getElementById('score');
 const resultsElement = document.querySelector('.results');
 const loseElement = document.querySelector('.lose');
+const matchAudio = document.getElementById('match');
+const nonmatchAudio = document.getElementById('notmatch');
+const winAudio = document.getElementById('win');
+const loseAudio = document.getElementById('lose');
 
 let isFlippedCard = false;
 let lockBoard = false;
@@ -17,8 +21,6 @@ let seconds = 0, minutes = 0;
 let levelCards, value;
 let matches = 0;
 let interval;
-
-// let levelCardArray = [];
 
 const timeGenerator = () => {
   seconds += 1;
@@ -32,7 +34,8 @@ const timeGenerator = () => {
 
   timerBtn.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
 
-  if (value === 'easy' && seconds === 5 || value === 'medium' && seconds === 15) {
+  if (value === 'easy' && seconds === 15 || value === 'medium' && seconds === 25) {
+    loseAudio.play();
     playerConfigOverlayElement.style.display = 'none';
     loseElement.style.display = 'block';
     backdropElement.style.display = 'none';
@@ -69,10 +72,12 @@ function flipCard() {
 const cardsMatching = () => {
   const isMatch = firstCard.dataset.card === secondCard.dataset.card;
   if (isMatch) {
+    matchAudio.play(); 
     disableCard();
     matches++;
     scoreElement.textContent = matches;
   } else {
+    nonmatchAudio.play();
     unflipCards();
   }
 };
@@ -135,6 +140,7 @@ const openPlayerConfig = () => {
 
 const whoWins = () => {
   if (matches === levelCards / 2) {
+    winAudio.play();
     clearInterval(interval);
 
     playerConfigOverlayElement.style.display = 'none';
