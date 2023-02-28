@@ -1,6 +1,5 @@
 const playerConfigOverlayElement = document.getElementById('config-overlay');
 const backdropElement = document.getElementById('backdrop');
-
 const cards = document.querySelectorAll('.card');
 const level = document.getElementById('level');
 const mediumLvlCards = document.querySelectorAll('.medium');
@@ -14,10 +13,9 @@ const loseElement = document.querySelector('.lose');
 let isFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard, playername;
-let seconds = 0,
-  minutes = 0;
+let seconds = 0, minutes = 0;
+let levelCards, value;
 let matches = 0;
-let levelCards;
 let interval;
 
 // let levelCardArray = [];
@@ -34,7 +32,7 @@ const timeGenerator = () => {
 
   timerBtn.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
 
-  if (seconds === 5) {
+  if (value === 'easy' && seconds === 5 || value === 'medium' && seconds === 15) {
     playerConfigOverlayElement.style.display = 'none';
     loseElement.style.display = 'block';
     backdropElement.style.display = 'none';
@@ -42,7 +40,7 @@ const timeGenerator = () => {
 };
 
 function levelSelect() {
-  const value = level.value;
+  value = level.value;
   if (value === 'easy') {
     levelCards = 16;
   } else if (value === 'medium') {
