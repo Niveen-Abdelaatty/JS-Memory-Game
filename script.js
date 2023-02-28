@@ -9,6 +9,7 @@ const refreshBtn = document.getElementById('refresh');
 const timerBtn = document.getElementById('timer');
 const scoreElement = document.getElementById('score');
 const resultsElement = document.querySelector('.results');
+const loseElement = document.querySelector('.lose');
 
 let isFlippedCard = false;
 let lockBoard = false;
@@ -18,6 +19,7 @@ let seconds = 0,
 let matches = 0;
 let levelCards;
 let interval;
+
 // let levelCardArray = [];
 
 const timeGenerator = () => {
@@ -31,6 +33,12 @@ const timeGenerator = () => {
   let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
 
   timerBtn.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+
+  if (seconds === 5) {
+    playerConfigOverlayElement.style.display = 'none';
+    loseElement.style.display = 'block';
+    backdropElement.style.display = 'none';
+  }
 };
 
 function levelSelect() {
@@ -91,7 +99,7 @@ const unflipCards = () => {
 const resetBoard = () => {
   [isFlippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
-}
+};
 
 const displayLvlCards = () => {
   const lvl = levelSelect();
@@ -101,11 +109,11 @@ const displayLvlCards = () => {
   } else {
     mediumLvlCards.forEach((card) => (card.style.display = 'none'));
   }
-}
+};
 
 const shuffle = () => {
   [matches, seconds, minutes] = [0, 0, 0];
- 
+
   scoreElement.textContent = 'Score';
 
   interval = setInterval(timeGenerator, 1000);
@@ -113,19 +121,19 @@ const shuffle = () => {
   displayLvlCards();
   openPlayerConfig();
   resetBoard();
-  // console.log(cards);
+
   cards.forEach((card) => {
     card.classList.remove('flip');
     card.addEventListener('click', flipCard);
     let randomOrder = Math.floor(Math.random() * 48);
     card.style.order = randomOrder;
   });
-}
+};
 
 const openPlayerConfig = () => {
   playerConfigOverlayElement.style.display = 'block';
   backdropElement.style.display = 'block';
-}
+};
 
 const whoWins = () => {
   if (matches === levelCards / 2) {
@@ -138,7 +146,7 @@ const whoWins = () => {
 
     console.log('you win');
   }
-}
+};
 
 cards.forEach((card) => {
   card.addEventListener('click', flipCard);
@@ -149,7 +157,7 @@ const refresh = () => {
   [seconds, minutes] = [0, 0];
 
   shuffle();
-}
+};
 
 level.addEventListener('change', levelSelect);
 startBtn.addEventListener('click', shuffle);
