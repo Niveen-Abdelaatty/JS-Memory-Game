@@ -76,6 +76,7 @@ function flipCard() {
 
 const cardsMatching = () => {
   const isMatch = firstCard.dataset.card === secondCard.dataset.card;
+  // console.log(isMatch);
   if (isMatch) {
     matchAudio.play();
     disableCard();
