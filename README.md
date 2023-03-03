@@ -1,4 +1,3 @@
-
 # About The Project
 
 Memory games for kids build thinking skills, concentration, attention and persistence. In this memory game, children try to remember objects I've hidden on the other side of a card. All you need is matching two images of fruit or vegtable.
@@ -34,6 +33,16 @@ A full list of proposed features
 - [x] Display a score
 - [x] Generate a timer
 - [x] Feedback the player in either win or lose state
+- [x] Ability to play many rounds
+
+# Key Concepts
+### Flipping the card
+
+1.	Position the two cards to place them over each other
+2.	Add 3d effect
+3.	Hide the other face of each card
+4.	Rotate one of the cards
+
 
 # Contribution
 
