@@ -3,7 +3,7 @@
 
 Memory games for kids build thinking skills, concentration, attention and persistence. In this memory game, children try to remember objects I've hidden on the other side of a card. All you need is matching two images of fruit or vegtable.
 
-# Build Using
+# Built Using
 
 **- Integrated Development Environment (IDE)**
 
